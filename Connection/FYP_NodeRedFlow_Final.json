@@ -1,0 +1,1310 @@
+[
+    {
+        "id": "b03f87092ca55c4f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "27a4f4d5fbc0c51e",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "17382749675f8fad",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "27a4f4d5fbc0c51e",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "affd352dbaba925f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "cc250e9921191eb7",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM6",
+        "serialbaud": "57600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "fce1307795d3d19e",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://127.0.0.1:49320",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "5790df051a0ab801",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM6",
+        "serialbaud": "57600",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "a472a043deae5daa",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "split string",
+        "func": "var outputMsgs = [];\nvar values = msg.payload.trim().split(\",\");\nfor (var v in values) {\n    outputMsgs.push({payload:values[v]})\n}\n\nreturn outputMsgs;",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "2694f5b659d3891e"
+            ],
+            [
+                "a7a051f9f719c194"
+            ],
+            [
+                "c270ef177e55f44e"
+            ],
+            [
+                "ca7999924c9e9f89"
+            ],
+            [
+                "08ba7a1d1bceec71"
+            ]
+        ]
+    },
+    {
+        "id": "2694f5b659d3891e",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Set as global variable",
+        "func": "// \"toFixed(2)\" converts a number to string with 2 decimal places\nmsg.payload = (Number(msg.payload)/Math.PI*180).toFixed(2);\nglobal.set(\"jointAngle1\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7a051f9f719c194",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Set as global variable",
+        "func": "msg.payload = (Number(msg.payload)/Math.PI*180).toFixed(2);\nglobal.set(\"jointAngle2\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c270ef177e55f44e",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Set as global variable",
+        "func": "msg.payload = (Number(msg.payload)/Math.PI*180).toFixed(2);\nglobal.set(\"jointAngle3\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca7999924c9e9f89",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Set as global variable",
+        "func": "msg.payload = (Number(msg.payload)/Math.PI*180).toFixed(2);\nglobal.set(\"jointAngle4\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08ba7a1d1bceec71",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Set as global variable",
+        "func": "msg.payload = (Number(msg.payload)/0.01).toFixed(2);\nglobal.set(\"gripperAngle\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e10db7e730b4e635",
+        "type": "comment",
+        "z": "b03f87092ca55c4f",
+        "name": "Joint angles from robot arm",
+        "info": "",
+        "x": 150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "15380c351a098822",
+        "type": "serial in",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "serial": "cc250e9921191eb7",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "a472a043deae5daa",
+                "9761aaaa6c549ae1"
+            ]
+        ]
+    },
+    {
+        "id": "9761aaaa6c549ae1",
+        "type": "debug",
+        "z": "b03f87092ca55c4f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 280,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7f42bb60909d177b",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 920,
+        "y": 440,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2634a745976ad7fe",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.jointAngle1",
+        "datatype": "Float",
+        "value": "",
+        "name": "jointAngle1",
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "7f42bb60909d177b"
+            ]
+        ]
+    },
+    {
+        "id": "842af9a2d4d247cc",
+        "type": "inject",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 460,
+        "wires": [
+            [
+                "45cfd5e887aa74ca",
+                "accd86709b58a3cd",
+                "5c61d18537a8c3b4",
+                "8cbe073dac769009",
+                "8eeb560f20a8a590"
+            ]
+        ]
+    },
+    {
+        "id": "45cfd5e887aa74ca",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 1",
+        "func": "var  sss=global.get(\"jointAngle1\")\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "2634a745976ad7fe"
+            ]
+        ]
+    },
+    {
+        "id": "accd86709b58a3cd",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 2",
+        "func": "msg.payload=global.get(\"jointAngle2\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 460,
+        "wires": [
+            [
+                "4965780f738c9f9f"
+            ]
+        ]
+    },
+    {
+        "id": "5c61d18537a8c3b4",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 3",
+        "func": "msg.payload=global.get(\"jointAngle3\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 500,
+        "wires": [
+            [
+                "2d8eeb9288087f9b"
+            ]
+        ]
+    },
+    {
+        "id": "8cbe073dac769009",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 4",
+        "func": "msg.payload=global.get(\"jointAngle4\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 540,
+        "wires": [
+            [
+                "1cad3132bb5d8fe4"
+            ]
+        ]
+    },
+    {
+        "id": "8eeb560f20a8a590",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 5",
+        "func": "msg.payload=global.get(\"gripperAngle\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 580,
+        "wires": [
+            [
+                "dcfa4710667a18aa"
+            ]
+        ]
+    },
+    {
+        "id": "4965780f738c9f9f",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.jointAngle2",
+        "datatype": "Float",
+        "value": "",
+        "name": "jointAngle2",
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "7f42bb60909d177b"
+            ]
+        ]
+    },
+    {
+        "id": "2d8eeb9288087f9b",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.jointAngle3",
+        "datatype": "Float",
+        "value": "",
+        "name": "jointAngle3",
+        "x": 670,
+        "y": 500,
+        "wires": [
+            [
+                "7f42bb60909d177b"
+            ]
+        ]
+    },
+    {
+        "id": "1cad3132bb5d8fe4",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.jointAngle4",
+        "datatype": "Float",
+        "value": "",
+        "name": "jointAngle4",
+        "x": 670,
+        "y": 540,
+        "wires": [
+            [
+                "7f42bb60909d177b"
+            ]
+        ]
+    },
+    {
+        "id": "dcfa4710667a18aa",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.gripperAngle",
+        "datatype": "Float",
+        "value": "",
+        "name": "gripperAngle",
+        "x": 670,
+        "y": 580,
+        "wires": [
+            [
+                "7f42bb60909d177b"
+            ]
+        ]
+    },
+    {
+        "id": "89cded185f948d66",
+        "type": "udp in",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "iface": "",
+        "port": "1234",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 160,
+        "y": 720,
+        "wires": [
+            [
+                "c63e5b9c29f690c6",
+                "6ec287d9be32a592"
+            ]
+        ]
+    },
+    {
+        "id": "918605f0f73d0f37",
+        "type": "comment",
+        "z": "b03f87092ca55c4f",
+        "name": "Joint angles from Unity",
+        "info": "",
+        "x": 140,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c63e5b9c29f690c6",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Write to real robot",
+        "func": "let anglesStr = msg.payload.split(\",\");\nif (anglesStr.length !== 5) {\n    node.warn(\"Expected 5 angles, but got: \" + anglesStr.length);\n    return null;\n}\n\nlet angle1Deg = parseFloat(anglesStr[0]) || 0;\nlet angle2Deg = parseFloat(anglesStr[1]) || 0;\nlet angle3Deg = parseFloat(anglesStr[2]) || 0;\nlet angle4Deg = parseFloat(anglesStr[3]) || 0;\nlet gripperVal = parseFloat(anglesStr[4]) || 0;\n\nlet angle1Rad = angle1Deg * Math.PI / 180;\nlet angle2Rad = angle2Deg * Math.PI / 180;\nlet angle3Rad = angle3Deg * Math.PI / 180;\nlet angle4Rad = angle4Deg * Math.PI / 180;\n\nlet jointcommand = \"joint,\" +\n    angle1Rad.toFixed(4) + \",\" +\n    angle2Rad.toFixed(4) + \",\" +\n    angle3Rad.toFixed(4) + \",\" +\n    angle4Rad.toFixed(4);\n\nlet tolerance = 0.0001;\nlet gripperCommand = \"\";\nif (Math.abs(gripperVal - 0.01) < tolerance) {\n    gripperCommand = \"grip,off\";\n} else if (Math.abs(gripperVal + 0.01) < tolerance) {\n    gripperCommand = \"grip,on\";\n}\n\nlet msgJoint = { payload: jointcommand + \"\\n\" };\nlet msgGripper = { payload: gripperCommand + \"\\n\" };\n\nreturn [msgJoint, msgGripper];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 720,
+        "wires": [
+            [
+                "a74d119f6caf0ed7"
+            ],
+            [
+                "a74d119f6caf0ed7"
+            ]
+        ]
+    },
+    {
+        "id": "0fb5e633b8028ace",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 2",
+        "func": "// Check if the payload starts with \"DEBUG:\"\nif (msg.payload.startsWith(\"DEBUG:\")) {\n    // Create a new variable to store the debug message\n    let debugMessage = msg.payload;\n\n    // Optionally, you can modify the debug message\n    // For example, remove the \"DEBUG:\" prefix\n    debugMessage = debugMessage.replace(\"DEBUG:\", \"\").trim();\n\n    // Return the modified message\n    return { payload: debugMessage };\n}\n\n// If the message doesn't start with \"DEBUG:\", return nothing\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1160,
+        "wires": [
+            [
+                "f28608355bdba1c4"
+            ]
+        ]
+    },
+    {
+        "id": "f28608355bdba1c4",
+        "type": "debug",
+        "z": "b03f87092ca55c4f",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "f864411a7371e909",
+        "type": "serial in",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "serial": "5790df051a0ab801",
+        "x": 150,
+        "y": 1160,
+        "wires": [
+            [
+                "0fb5e633b8028ace"
+            ]
+        ]
+    },
+    {
+        "id": "53a1bf4dbb9439bd",
+        "type": "serial out",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "serial": "5790df051a0ab801",
+        "x": 930,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a74d119f6caf0ed7",
+        "type": "delay",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "0.5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 690,
+        "y": 720,
+        "wires": [
+            [
+                "53a1bf4dbb9439bd"
+            ]
+        ]
+    },
+    {
+        "id": "6ec287d9be32a592",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "split string",
+        "func": "var outputMsgs = [];\nvar values = msg.payload.trim().split(\",\");\n\nfor (var v in values) {\n    outputMsgs.push({ payload: values[v] })\n}\n\nreturn outputMsgs;\n",
+        "outputs": 5,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 820,
+        "wires": [
+            [
+                "c8d2885a1cd9d14b"
+            ],
+            [
+                "528b9f6ce5cbdfb4"
+            ],
+            [
+                "48fbf4902a7fc670"
+            ],
+            [
+                "cdd31b6e217ad49a"
+            ],
+            [
+                "56cc97dc7221b3da"
+            ]
+        ]
+    },
+    {
+        "id": "c8d2885a1cd9d14b",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 6",
+        "func": "var  sss=msg.payload\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 840,
+        "wires": [
+            [
+                "de52d53997f52d39"
+            ]
+        ]
+    },
+    {
+        "id": "de52d53997f52d39",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.UDPjointAngle1",
+        "datatype": "Float",
+        "value": "",
+        "name": "UDPjointAngle1",
+        "x": 640,
+        "y": 840,
+        "wires": [
+            [
+                "02302dcf05d384e0"
+            ]
+        ]
+    },
+    {
+        "id": "02302dcf05d384e0",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 960,
+        "y": 960,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "528b9f6ce5cbdfb4",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 7",
+        "func": "var  sss=msg.payload\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 900,
+        "wires": [
+            [
+                "4c6243a105ab59ed"
+            ]
+        ]
+    },
+    {
+        "id": "48fbf4902a7fc670",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 8",
+        "func": "var  sss=msg.payload\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 960,
+        "wires": [
+            [
+                "c01a6b16be78831a"
+            ]
+        ]
+    },
+    {
+        "id": "cdd31b6e217ad49a",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 9",
+        "func": "var  sss=msg.payload\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1020,
+        "wires": [
+            [
+                "3e12b52827287aaf"
+            ]
+        ]
+    },
+    {
+        "id": "56cc97dc7221b3da",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 10",
+        "func": "var  sss=msg.payload\nmsg.payload=sss\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1080,
+        "wires": [
+            [
+                "779594b7b64316b2"
+            ]
+        ]
+    },
+    {
+        "id": "4c6243a105ab59ed",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.UDPjointAngle2",
+        "datatype": "Float",
+        "value": "",
+        "name": "UDPjointAngle2",
+        "x": 640,
+        "y": 900,
+        "wires": [
+            [
+                "02302dcf05d384e0"
+            ]
+        ]
+    },
+    {
+        "id": "c01a6b16be78831a",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.UDPjointAngle3",
+        "datatype": "Float",
+        "value": "",
+        "name": "UDPjointAngle3",
+        "x": 640,
+        "y": 960,
+        "wires": [
+            [
+                "02302dcf05d384e0"
+            ]
+        ]
+    },
+    {
+        "id": "3e12b52827287aaf",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.UDPjointAngle4",
+        "datatype": "Float",
+        "value": "",
+        "name": "UDPjointAngle4",
+        "x": 640,
+        "y": 1020,
+        "wires": [
+            [
+                "02302dcf05d384e0"
+            ]
+        ]
+    },
+    {
+        "id": "779594b7b64316b2",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.UDPgripperAngle",
+        "datatype": "Float",
+        "value": "",
+        "name": "UDPgripperAngle",
+        "x": 630,
+        "y": 1080,
+        "wires": [
+            [
+                "02302dcf05d384e0"
+            ]
+        ]
+    },
+    {
+        "id": "4a34532a19efaff3",
+        "type": "inject",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1400,
+        "wires": [
+            [
+                "01c3c831233ef90e",
+                "149b94127ede2941",
+                "c24b8f2ce56db393",
+                "e3dbc5c3d4159bdc"
+            ]
+        ]
+    },
+    {
+        "id": "4cd893f4ada3a92b",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 620,
+        "y": 1320,
+        "wires": [
+            [
+                "e53030652b04b070"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "01c3c831233ef90e",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.setjointAngle1",
+        "datatype": "Float",
+        "value": "",
+        "name": "",
+        "x": 340,
+        "y": 1320,
+        "wires": [
+            [
+                "4cd893f4ada3a92b"
+            ]
+        ]
+    },
+    {
+        "id": "149b94127ede2941",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.setjointAngle2",
+        "datatype": "Float",
+        "value": "",
+        "name": "",
+        "x": 340,
+        "y": 1380,
+        "wires": [
+            [
+                "542f201e7ea9e306"
+            ]
+        ]
+    },
+    {
+        "id": "542f201e7ea9e306",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 620,
+        "y": 1380,
+        "wires": [
+            [
+                "aad4db71059ced2d"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "22c470fd6df38e48",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 620,
+        "y": 1440,
+        "wires": [
+            [
+                "e0f17f30c7e76cbc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c24b8f2ce56db393",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.setjointAngle3",
+        "datatype": "Float",
+        "value": "",
+        "name": "",
+        "x": 340,
+        "y": 1440,
+        "wires": [
+            [
+                "22c470fd6df38e48"
+            ]
+        ]
+    },
+    {
+        "id": "e3dbc5c3d4159bdc",
+        "type": "OpcUa-Item",
+        "z": "b03f87092ca55c4f",
+        "item": "ns=2;s=s.d.setjointAngle4",
+        "datatype": "Float",
+        "value": "",
+        "name": "",
+        "x": 340,
+        "y": 1500,
+        "wires": [
+            [
+                "775dbc7b756cc8e0"
+            ]
+        ]
+    },
+    {
+        "id": "775dbc7b756cc8e0",
+        "type": "OpcUa-Client",
+        "z": "b03f87092ca55c4f",
+        "endpoint": "fce1307795d3d19e",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 620,
+        "y": 1500,
+        "wires": [
+            [
+                "6a9f0d68c924a2af"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4daf111c76b7b964",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "Write from OpcUA",
+        "func": "var setjointAngle1 = global.get(\"setjointAngle1\") || 0;\nvar setjointAngle2 = global.get(\"setjointAngle2\") || 0;\nvar setjointAngle3 = global.get(\"setjointAngle3\") || 0;\nvar setjointAngle4 = global.get(\"setjointAngle4\") || 0;\n\nlet setangle1Rad = setjointAngle1 * Math.PI / 180;\nlet setangle2Rad = setjointAngle2 * Math.PI / 180;\nlet setangle3Rad = setjointAngle3 * Math.PI / 180;\nlet setangle4Rad = setjointAngle4 * Math.PI / 180;\n\nlet setjointcommand = \"joint,\" +\n    setangle1Rad.toFixed(4) + \",\" +\n    setangle2Rad.toFixed(4) + \",\" +\n    setangle3Rad.toFixed(4) + \",\" +\n    setangle4Rad.toFixed(4);\n\nlet msgsetJoint = { payload: setjointcommand + \"\\n\" };\n\nreturn [msgsetJoint];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 1420,
+        "wires": [
+            [
+                "36e3f4c75d05d63a"
+            ]
+        ]
+    },
+    {
+        "id": "36e3f4c75d05d63a",
+        "type": "serial out",
+        "z": "b03f87092ca55c4f",
+        "name": "",
+        "serial": "5790df051a0ab801",
+        "x": 1270,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "c21c74dbf52c4286",
+        "type": "comment",
+        "z": "b03f87092ca55c4f",
+        "name": "Manual Control",
+        "info": "",
+        "x": 120,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "6a9f0d68c924a2af",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 14",
+        "func": "var sss=msg.payload\nglobal.set(\"setjointAngle4\",sss)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1500,
+        "wires": [
+            [
+                "4daf111c76b7b964"
+            ]
+        ]
+    },
+    {
+        "id": "e0f17f30c7e76cbc",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 13",
+        "func": "var sss=msg.payload\nglobal.set(\"setjointAngle3\",sss)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1440,
+        "wires": [
+            [
+                "4daf111c76b7b964"
+            ]
+        ]
+    },
+    {
+        "id": "aad4db71059ced2d",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 12",
+        "func": "var sss=msg.payload\nglobal.set(\"setjointAngle2\",sss)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1380,
+        "wires": [
+            [
+                "4daf111c76b7b964"
+            ]
+        ]
+    },
+    {
+        "id": "e53030652b04b070",
+        "type": "function",
+        "z": "b03f87092ca55c4f",
+        "name": "function 11",
+        "func": "var sss=msg.payload\nglobal.set(\"setjointAngle1\",sss)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1320,
+        "wires": [
+            [
+                "4daf111c76b7b964"
+            ]
+        ]
+    }
+]
