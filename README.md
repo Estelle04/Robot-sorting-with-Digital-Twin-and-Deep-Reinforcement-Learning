@@ -4,13 +4,8 @@ This repository contains a Unity-based simulation of a robotic sorting system th
 
 ## 🖼️ Sample Scenes
 
-### Digital Twin Scene 
-![Digital Twin Sample Scene](SampleSceneImages\SampleSceneDT.png)
+![Digital Twin Sample Scene](SampleSceneImages/SampleSceneDT.png)
 
-### DRL Training Scene 
-![Deep Reinforcement Learning Training Scene](SampleSceneImages\TrainingSceneDRL.png)
+![Deep Reinforcement Learning Training Scene](SampleSceneImages/TrainingSceneDRL.png)
 
-### DRL Testing Scene 
-![Deep Reinforcement Learning Testing Scene](SampleSceneImages\TestSceneDRL.png)
-
----
+![Deep Reinforcement Learning Testing Scene](SampleSceneImages/TestSceneDRL.png)
